@@ -22,6 +22,10 @@
 #include <time.h>
 #include <float.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct {
     const char* name;
     clock_t start_time;
@@ -129,5 +133,9 @@ void fossil_test_start_benchmark(void);
  * @return The elapsed time in nanoseconds.
  */
 uint64_t fossil_test_stop_benchmark(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // FOSSIL_MARK_FRAMEWORK_H
