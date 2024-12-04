@@ -1,0 +1,16 @@
+[project]
+name = 'example'
+version = '1.0.0'
+description = 'Example package using the meson-python build backend'
+readme = 'README.rst'
+license = {file = 'LICENSE.txt'}
+authors = [
+  {name = 'Au Thor', email = 'author@example.com'},
+]
+
+[project.scripts]
+example = 'example.cli:main'
+
+[build-system]
+build-backend = 'mesonpy'
+requires = ['meson-python']
