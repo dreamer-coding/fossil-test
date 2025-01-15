@@ -736,7 +736,7 @@ int fossil_test_analyze(const char *sentence) {
     int severity_score = 0;
 
     // Check for meme words using custom matching
-    for (int i = 0; i < sizeof(FOSSIL_TEST_ROTBRAIN) / sizeof(FOSSIL_TEST_ROTBRAIN[0]); ++i) {
+    for (size_t i = 0; i < sizeof(FOSSIL_TEST_ROTBRAIN) / sizeof(FOSSIL_TEST_ROTBRAIN[0]); ++i) {
         if (_custom_match(sentence, FOSSIL_TEST_ROTBRAIN[i])) {
             severity_score += 1; // Low severity for garbage words
             printf(FOSSIL_TEST_COLOR_YELLOW "Meme word detected in sentence: %s\n" FOSSIL_TEST_COLOR_RESET, sentence);
@@ -746,7 +746,7 @@ int fossil_test_analyze(const char *sentence) {
     }
 
     // Check for offensive words using custom matching
-    for (int i = 0; i < sizeof(FOSSIL_TEST_OFFENSIVE) / sizeof(FOSSIL_TEST_OFFENSIVE[0]); ++i) {
+    for (size_t i = 0; i < sizeof(FOSSIL_TEST_OFFENSIVE) / sizeof(FOSSIL_TEST_OFFENSIVE[0]); ++i) {
         if (_custom_match(sentence, FOSSIL_TEST_OFFENSIVE[i])) {
             severity_score += 10; // High severity for offensive words
             printf(FOSSIL_TEST_COLOR_RED "Offensive word detected in sentence: %s\n" FOSSIL_TEST_COLOR_RESET, sentence);
