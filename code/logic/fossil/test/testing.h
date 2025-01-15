@@ -218,6 +218,12 @@ typedef struct test_suite {
  * @var fossil_test_env::unexpected_count
  * Count of tests that have encountered unexpected errors.
  * 
+ * @var fossil_test_env::rotbrain_count
+ * Count of tests that have encountered media meme messages.
+ * 
+ * @var fossil_test_env::offensive_count
+ * Count of tests that have encountered offensive messages.
+ * 
  * @var fossil_test_env::start_execution_time
  * Timestamp marking the start of test execution.
  * 
@@ -237,6 +243,8 @@ typedef struct fossil_test_env {
     int empty_count;
     int timeout_count;
     int unexpected_count;
+    int rotbrain_count;
+    int offensive_count;
     double start_execution_time;
     double end_execution_time;
     test_suite_t *test_suites;

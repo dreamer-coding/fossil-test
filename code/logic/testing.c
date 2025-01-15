@@ -279,6 +279,122 @@ const char *timeout_messages[] = {
 
 #endif
 
+// Fun and sarcastic responses for dashboard categories
+
+// best to have a little fun with the user when they are using slang
+// that is not professional or appropriate for the project.
+static const char* rotbrain_messages[] = {
+    "You need to lay off the internet slang... please.",
+    "Is this how you talk to people in real life? Wow.",
+    "I can feel my IQ dropping just reading this.",
+    "Really? You’re still saying that? Please stop.",
+    "You are truly the embodiment of ‘No Cap’.",
+    "‘Rizz’... really? You’re embarrassing yourself.",
+    "If I hear ‘vibe check’ one more time, I’m uninstalling.",
+    "This message is the dictionary definition of cringe.",
+    "I need to go wash my brain after reading that.",
+    "You’re an enigma, wrapped in a ‘yeet’ and ‘lit’.",
+    "‘Bet’? Did you mean ‘best’? Yeah, no.",
+    "Just when I thought I’d seen it all, here comes this.",
+    "Someone call an adult. This message needs supervision.",
+    "Oh wow, another ‘sus’ message. How original.",
+    "Congratulations, you just invented a new language... not.",
+    "Please stop speaking in memes.",
+    "What are you, 12? This is exhausting.",
+    "Is this a dictionary or just a random word generator?",
+    "Did a 14-year-old write this? Asking for a friend.",
+    "I’m going to need a dictionary and a nap after this.",
+    "Your slang game is strong, but it’s not welcome here.",
+    "This is a professional environment, not a meme fest.",
+    "I think you’ve spent too much time on social media.",
+    "Your message is a perfect example of why we need filters.",
+    "Can we try using real words next time?",
+    "I’m losing brain cells reading this.",
+    "This isn’t a TikTok comment section.",
+    "Your slang is outdated, just like your fashion sense.",
+    "I didn’t realize we were in a middle school chatroom.",
+    "Let’s keep it professional, shall we?"
+};
+
+// importent to guide the user to better behavior when writting messages
+// for a compeny product or personal projects.
+static const char* offensive_messages[] = {
+    "Wow, didn’t know we were dealing with such a bigot.",
+    "That language belongs in the past. Please don’t bring it here.",
+    "We do better than this, right? Let’s not cross the line.",
+    "Is that really how you want to speak to others?",
+    "What a lovely attitude... not.",
+    "Your words are hurtful. Do better.",
+    "Think before you speak. The internet remembers.",
+    "How about we try being respectful instead?",
+    "That was really unnecessary. Let’s move on.",
+    "You should probably rethink that comment.",
+    "I’m sure there are better ways to express yourself.",
+    "Let’s keep the conversation civil, shall we?",
+    "You can do better. Words matter.",
+    "Wow, that was borderline offensive. Let’s dial it back.",
+    "Let’s be kind to each other. No need for hate speech.",
+    "There’s a better way to get your point across.",
+    "If you can’t say something nice, don’t say anything at all.",
+    "We’re better than this. Let’s elevate the conversation.",
+    "Let’s leave the toxicity out of here.",
+    "Respect is free. Use it.",
+    "That comment was uncalled for.",
+    "We should aim to uplift, not tear down.",
+    "Your language is not acceptable here.",
+    "Let’s choose our words wisely.",
+    "That’s not the kind of language we use here.",
+    "We’re all about positivity here.",
+    "Let’s keep it positive and professional.",
+    "Your comment is not in line with our values.",
+    "We expect better from our community.",
+    "Let’s strive for a respectful dialogue."
+};
+
+// garbage words and phrases
+// (slightly easier to maintain since it's just slang from social media spoken from people who need to touch grass)
+const char *FOSSIL_TEST_ROTBRAIN[] = {
+    "rizz", "skibidi", "yeet", "sus", "vibe", "lit", "no cap", "bet", "fam", "bruh",
+    "flex", "ghost", "goat", "gucci", "hype", "janky", "lowkey", "mood", "salty", "shade",
+    "slay", "snatched", "stan", "tea", "thirsty", "woke", "yolo", "zaddy", "drip", "fire"
+
+    // Support for other terms can be added via PR to this repository
+};
+
+// offensive words and phrases
+// (super hard to mainting this list as GitHub Copilot doesnt wanna help with this part of the APIs for some reason)
+static const char *FOSSIL_TEST_OFFENSIVE[] = {
+    // English offensive words and phrases
+    "2g1c", "2 girls 1 cup", "acrotomophilia", "alabama hot pocket", "alaskan pipeline", "anal", "anilingus", "anus", "apeshit", "arsehole", "ass", "asshole", "assmunch", "auto erotic", "autoerotic", "babeland",
+    "baby batter", "baby juice", "ball gag", "ball gravy", "ball kicking", "ball licking", "ball sack", "ball sucking", "bangbros", "bareback", "barely legal", "barenaked", "bastard", "bastardo", "bastinado", "bbw",
+    "bdsm", "beaner", "beaners", "beaver cleaver", "beaver lips", "bestiality", "big black", "big breasts", "big knockers", "big tits", "bimbos", "birdlock", "bitch", "bitches", "black cock", "blonde action", "blonde on blonde action",
+    "blowjob", "blow job", "blow your load", "blue waffle", "blumpkin", "bollocks", "bondage", "boner", "boob", "boobs", "booty call", "brown showers", "brunette action", "bukkake", "bulldyke", "bullet vibe", "bullshit",
+    "bung hole", "bunghole", "busty", "butt", "buttcheeks", "butthole", "camel toe", "camgirl", "camslut", "camwhore", "carpet muncher", "carpetmuncher", "chocolate rosebuds", "circlejerk", "cleveland steamer", "clit",
+    "clitoris", "clover clamps", "clusterfuck", "cock", "cocks", "coprolagnia", "coprophilia", "cornhole", "coon", "coons", "creampie", "cum", "cumming", "cunnilingus", "cunt", "darkie", "date rape", "daterape",
+    "deep throat", "deepthroat", "dendrophilia", "dick", "dildo", "dingleberry", "dingleberries", "dirty pillows", "dirty sanchez", "doggie style", "doggiestyle", "doggy style", "doggystyle", "dog style", "dolcett",
+    "domination", "dominatrix", "dommes", "donkey punch", "double dong", "double penetration", "dp action", "dry hump", "dvda", "eat my ass", "ecchi", "ejaculation", "erotic", "erotism", "escort", "eunuch", "faggot",
+    "fecal", "felch", "fellatio", "feltch", "female squirting", "femdom", "figging", "fingerbang", "fingering", "fisting", "foot fetish", "footjob", "frotting", "fuck", "fuck buttons", "fuckin", "fucking", "fucktards",
+    "fudge packer", "fudgepacker", "futanari", "gang bang", "gay sex", "genitals", "giant cock", "girl on", "girl on top", "girls gone wild", "goatcx", "goatse", "god damn", "gokkun", "golden shower", "goodpoop",
+    "goo girl", "goregasm", "grope", "group sex", "g-spot", "guro", "hand job", "handjob", "hard core", "hardcore", "hentai", "homoerotic", "honkey", "hooker", "hot carl", "hot chick", "how to kill", "how to murder",
+    "huge fat", "humping", "incest", "intercourse", "jack off", "jail bait", "jailbait", "jelly donut", "jerk off", "jigaboo", "jiggaboo", "jiggerboo", "jizz", "juggs", "kike", "kinbaku", "kinkster", "kinky", "knobbing",
+    "leather restraint", "leather straight jacket", "lemon party", "lolita", "lovemaking", "make me come", "male squirting", "masturbate", "menage a trois", "milf", "missionary position", "motherfucker", "mound of venus",
+    "mr hands", "muff diver", "muffdiving", "nambla", "nawashi", "negro", "neonazi", "nigga", "nigger", "nig nog", "nimphomania", "nipple", "nipples", "nsfw images", "nude", "nudity", "nympho", "nymphomania", "octopussy",
+    "omorashi", "one cup two girls", "one guy one jar", "orgasm", "orgy", "paedophile", "paki", "panties", "panty", "pedobear", "pedophile", "pegging", "penis", "phone sex", "piece of shit", "pissing", "piss pig", "pisspig",
+    "playboy", "pleasure chest", "pole smoker", "ponyplay", "poof", "poon", "poontang", "punany", "poop chute", "poopchute", "porn", "porno", "pornography", "prince albert piercing", "pthc", "pubes", "pussy", "queaf", "queef",
+    "quim", "raghead", "raging boner", "rape", "raping", "rapist", "rectum", "reverse cowgirl", "rimjob", "rimming", "rosy palm", "rosy palm and her 5 sisters", "rusty trombone", "sadism", "santorum", "scat", "schlong",
+    "scissoring", "semen", "sex", "sexo", "sexy", "shaved beaver", "shaved pussy", "shemale", "shibari", "shit", "shitblimp", "shitty", "shota", "shrimping", "skeet", "slanteye", "slut", "s&m", "smut", "snatch", "snowballing",
+    "sodomize", "sodomy", "spic", "splooge", "splooge moose", "spooge", "spread legs", "spunk", "strap on", "strapon", "strappado", "strip club", "style doggy", "suck", "sucks", "suicide girls", "sultry women", "swastika",
+    "swinger", "tainted love", "taste my", "tea bagging", "threesome", "throating", "tied up", "tight white", "tit", "tits", "titties", "titty", "tongue in a", "topless", "tosser", "towelhead", "tranny", "tribadism",
+    "tub girl", "tubgirl", "tushy", "twat", "twink", "twinkie", "two girls one cup", "undressing", "upskirt", "urethra play", "urophilia", "vagina", "venus mound", "vibrator", "violet wand", "vorarephilia", "voyeur", "vulva",
+    "wank", "wetback", "wet dream", "white power", "wrapping men", "wrinkled starfish", "xx", "xxx", "yaoi", "yellow showers", "yiffy", "zoophilia"
+
+    // Support for other languages can be added via PR to this repository
+};
+
+// Define custom regex patterns for offensive/meme speak detection
+const char *FOSSIL_TEST_ROTBRAIN_REGEX = "(rizz|skibidi|yeet|sus|vibe|lit|no cap|bet|fam|bruh|flex|ghost|goat|gucci|hype|janky|lowkey|mood|salty|shade|slay|snatched|stan|tea|thirsty|woke|yolo|zaddy|drip|fire)";  // Match any of the meme words
+const char *FOSSIL_TEST_OFFENSIVE_REGEX = "(badword1|badword2|offensivephrase1)";  // Match offensive words
+
 static const char *FOSSIL_TEST_OPTIONS[] = {
     "--version - Displays the current version of Fossil Test\n",
     "--help - Shows help message with usage\n",
@@ -297,6 +413,8 @@ static const char *FOSSIL_TEST_AUTHOR = "Michael Gene Brockus (Dreamer)"; // Aut
 static const char *FOSSIL_TEST_LICENSE = "Mozilla Public License 2.0"; // License of Fossil Test
 
 jmp_buf test_jump_buffer; // This will hold the jump buffer for longjmp
+static bool OFFENSIVE_WORDS_SEEN = true;
+static bool MEME_WORDS_SEEN = true;
 static int _ASSERT_COUNT = 0; // Counter for the number of assertions
 
 
@@ -309,6 +427,27 @@ char *_custom_fossil_test_strdup(const char *str) {
     }
     memcpy(new_str, str, len);
     return new_str;
+}
+
+// Custom function to match words using simple rules (like partial matching or exact matching)
+bool _custom_match(const char *input, const char *pattern) {
+    // Basic exact match
+    if (strcmp(input, pattern) == 0) {
+        return true;
+    }
+
+    // Check for wildcard-like behavior (e.g., "sus*" matches any word starting with "sus")
+    if (strchr(pattern, '*')) {
+        // Loop through input and check if the pattern matches with "*" acting as a wildcard
+        char *wildcard_pos = strchr(pattern, '*');
+        size_t prefix_len = wildcard_pos - pattern;
+        if (strncmp(input, pattern, prefix_len) == 0) {
+            // Match the remaining part after the wildcard (everything)
+            return true;
+        }
+    }
+
+    return false;
 }
 
 // Initialize the options structure
@@ -593,36 +732,65 @@ void fossil_test_run_suite(test_suite_t *suite, fossil_test_env_t *env) {
     }
 }
 
+int fossil_test_analyze(const char *sentence) {
+    int severity_score = 0;
+
+    // Check for meme words using custom matching
+    for (int i = 0; i < sizeof(FOSSIL_TEST_ROTBRAIN) / sizeof(FOSSIL_TEST_ROTBRAIN[0]); ++i) {
+        if (_custom_match(sentence, FOSSIL_TEST_ROTBRAIN[i])) {
+            severity_score += 1; // Low severity for garbage words
+            printf(FOSSIL_TEST_COLOR_YELLOW "Meme word detected in sentence: %s\n" FOSSIL_TEST_COLOR_RESET, sentence);
+            MEME_WORDS_SEEN = true;
+            break;  // No need to continue if we already matched a meme word
+        }
+    }
+
+    // Check for offensive words using custom matching
+    for (int i = 0; i < sizeof(FOSSIL_TEST_OFFENSIVE) / sizeof(FOSSIL_TEST_OFFENSIVE[0]); ++i) {
+        if (_custom_match(sentence, FOSSIL_TEST_OFFENSIVE[i])) {
+            severity_score += 10; // High severity for offensive words
+            printf(FOSSIL_TEST_COLOR_RED "Offensive word detected in sentence: %s\n" FOSSIL_TEST_COLOR_RESET, sentence);
+            OFFENSIVE_WORDS_SEEN = true;
+            break;  // No need to continue if we already matched an offensive word
+        }
+    }
+
+    return severity_score;
+}
+
 // Internal function to handle assertions with anomaly detection
 void fossil_test_assert_internal(bool condition, const char *message, const char *file, int line, const char *func) {
-    static const char *last_message = NULL; // Store the last assertion message
-    static const char *last_file = NULL;    // Store the last file name
-    static int last_line = 0;               // Store the last line number
-    static const char *last_func = NULL;    // Store the last function name
-    static int anomaly_count = 0;           // Counter for anomaly detection
+    static const char *last_message = NULL;
+    static const char *last_file = NULL;
+    static int last_line = 0;
+    static const char *last_func = NULL;
+    static int anomaly_count = 0;
 
-    _ASSERT_COUNT++; // Increment the assertion count
+    _ASSERT_COUNT++;
 
     if (!condition) {
-        // Check if the current assertion is the same or similar to the last one
-        if (last_message && strstr(message, last_message) != NULL &&
-            last_file && strcmp(last_file, file) == 0 &&
-            last_line == line &&
-            last_func && strcmp(last_func, func) == 0) {
-            anomaly_count++;
-            printf(FOSSIL_TEST_COLOR_YELLOW "Duplicate or similar assertion detected: %s (%s:%d in %s) [Anomaly Count: %d]\n" FOSSIL_TEST_COLOR_RESET, message, file, line, func, anomaly_count);
-        } else {
-            anomaly_count = 0; // Reset anomaly count for new assertion
-            printf(FOSSIL_TEST_COLOR_RED "Assertion failed: %s (%s:%d in %s)\n" FOSSIL_TEST_COLOR_RESET, message, file, line, func);
+        int severity = fossil_test_analyze(message);
+
+        // Enhanced anomaly detection based on severity
+        if (severity > 0) {
+            if (last_message && strstr(message, last_message) != NULL &&
+                last_file && strcmp(last_file, file) == 0 &&
+                last_line == line &&
+                last_func && strcmp(last_func, func) == 0) {
+                anomaly_count++;
+                printf(FOSSIL_TEST_COLOR_YELLOW "Duplicate or similar assertion detected: %s (%s:%d in %s) [Anomaly Count: %d]\n" FOSSIL_TEST_COLOR_RESET, message, file, line, func, anomaly_count);
+            } else {
+                anomaly_count = 0;
+                printf(FOSSIL_TEST_COLOR_RED "Assertion failed: %s (%s:%d in %s)\n" FOSSIL_TEST_COLOR_RESET, message, file, line, func);
+            }
+
+            last_message = message;
+            last_file = file;
+            last_line = line;
+            last_func = func;
         }
 
-        // Update the last assertion details
-        last_message = message;
-        last_file = file;
-        last_line = line;
-        last_func = func;
-
-        longjmp(test_jump_buffer, 1); // Jump back to test case failure handler
+        longjmp(test_jump_buffer, 1);
     }
 }
 
@@ -734,6 +902,8 @@ void fossil_test_init(fossil_test_env_t *env, int argc, char **argv) {
     env->empty_count = 0;
     env->total_tests = 0;
     env->timeout_count = 0;
+    env->rotbrain_count = 0;
+    env->offensive_count = 0;
     env->start_execution_time = clock();
     env->end_execution_time = 0.0;
     env->unexpected_count = 0;
@@ -752,14 +922,16 @@ void fossil_test_message(fossil_test_env_t *env) {
 
     if (env->pass_count == 0 && env->fail_count == 0 && env->skip_count == 0 && env->timeout_count == 0 && env->empty_count > 0) {
         printf(FOSSIL_TEST_COLOR_YELLOW FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, sarcastic_messages[rand() % 30]);
+    } else if (env->rotbrain_count > 0) {
+        printf(FOSSIL_TEST_COLOR_PURPLE FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, rotbrain_messages[rand() % 30]);
+    } else if (env->offensive_count > 0) {
+        printf(FOSSIL_TEST_COLOR_RED FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, offensive_messages[rand() % 30]);
+    } else if (env->timeout_count > 0) {
+        printf(FOSSIL_TEST_COLOR_ORANGE FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, timeout_messages[rand() % 30]);
     } else if (env->fail_count > 0) {
         printf(FOSSIL_TEST_COLOR_RED FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, humorous_messages[rand() % 30]);
     } else if (env->pass_count > 0) {
         printf(FOSSIL_TEST_COLOR_GREEN FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, great_news_messages[rand() % 30]);
-    } else if (env->timeout_count > 0) {
-        printf(FOSSIL_TEST_COLOR_ORANGE FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, timeout_messages[rand() % 30]);
-    } else {
-        puts(FOSSIL_TEST_COLOR_BLUE FOSSIL_TEST_ATTR_ITATIC "Test results are in. Keep pushing, you're getting there!" FOSSIL_TEST_COLOR_RESET);
     }
 }
 
@@ -778,7 +950,15 @@ void fossil_test_summary(fossil_test_env_t *env) {
     while (suite != NULL) {
         test_case_t *test = suite->tests;
         while (test != NULL) {
-            if (test->status == TEST_STATUS_PASS) {
+            if (test->status == TEST_STATUS_EMPTY) {
+                env->empty_count++;
+            } else if (MEME_WORDS_SEEN) {
+                env->rotbrain_count++;
+                MEME_WORDS_SEEN = false;
+            } else if (OFFENSIVE_WORDS_SEEN) {
+                env->offensive_count++;
+                OFFENSIVE_WORDS_SEEN = false;
+            } else if (test->status == TEST_STATUS_PASS) {
                 env->pass_count++;
             } else if (test->status == TEST_STATUS_FAIL) {
                 env->fail_count++;
