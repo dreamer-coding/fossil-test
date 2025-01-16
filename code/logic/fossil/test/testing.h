@@ -15,8 +15,6 @@
 #ifndef FOSSIL_TEST_CORE_H
 #define FOSSIL_TEST_CORE_H
 
-#define MAX_NAME_LENGTH 256
-
 // Color codes
 #define FOSSIL_TEST_COLOR_RESET   "\033[0m"  // Reset
 #define FOSSIL_TEST_COLOR_GREEN   "\033[32m" // Green
@@ -244,7 +242,6 @@ typedef struct fossil_test_env {
     int timeout_count;
     int unexpected_count;
     int rotbrain_count;
-    int offensive_count;
     double start_execution_time;
     double end_execution_time;
     test_suite_t *test_suites;
@@ -328,7 +325,7 @@ void fossil_test_run_suite(test_suite_t *suite, fossil_test_env_t *env);
  * @param line The line number where the assertion occurred.
  * @param func The function name where the assertion occurred.
  */
-void fossil_test_assert_internal(bool condition, const char *message, const char *file, int line, const char *func);
+void fossil_test_assume_internal(bool condition, const char *message, const char *file, int line, const char *func);
 
 /**
  * @brief Initializes the test environment.
@@ -362,7 +359,7 @@ void fossil_test_run_all(fossil_test_env_t *env);
  * message and may abort the execution of the test case or test suite.
  */
 #define _FOSSIL_TEST_ASSUME(condition, message) \
-    fossil_test_assert_internal((condition), (message), __FILE__, __LINE__, __func__)
+    fossil_test_assume_internal((condition), (message), __FILE__, __LINE__, __func__)
 
 /**
  * @brief Macro to fail a test case.

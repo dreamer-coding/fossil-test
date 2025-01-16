@@ -14,7 +14,6 @@
  */
 #include "fossil/test/testing.h"
 
-#ifdef __WIN32
 // Array of messages for each category
 const char *sarcastic_messages[] = {
     "Wow, no tests were run! What a productive day!",
@@ -46,7 +45,27 @@ const char *sarcastic_messages[] = {
     "No tests? Guess we're flawless.",
     "No tests executed. Time to unwind.",
     "No tests? Must be a coding break.",
-    "No tests run. Time to kick back."
+    "No tests run. Time to kick back.",
+    "No tests executed. What a surprise!",
+    "No tests? Guess we're all perfect coders.",
+    "No tests run. Time to take a nap.",
+    "No tests? Must be a coding dream.",
+    "No tests executed. Time to party!",
+    "No tests? Guess we're all geniuses.",
+    "No tests run. Time to celebrate!",
+    "No tests? Must be a coding legend.",
+    "No tests executed. Time to rejoice.",
+    "No tests? Guess we're all experts.",
+    "No tests run. Time to relax and enjoy.",
+    "No tests? Must be a coding utopia.",
+    "No tests executed. Time to have fun.",
+    "No tests? Guess we're all masters.",
+    "No tests run. Time to take a break.",
+    "No tests? Must be a coding paradise.",
+    "No tests executed. Time to chill out.",
+    "No tests? Guess we're all wizards.",
+    "No tests run. Time to unwind and relax.",
+    "No tests? Must be a coding heaven."
 };
 
 const char *humorous_messages[] = {
@@ -79,7 +98,26 @@ const char *humorous_messages[] = {
     "Your tests failed. Time to figure it out.",
     "Oops! That didn't go well. Time to debug.",
     "Well, that was a fail. Let's try again.",
-    "Looks like we have some errors to fix."
+    "Looks like we have some errors to fix.",
+    "Your tests failed. Time to troubleshoot.",
+    "Oops! That was unexpected. Time to investigate.",
+    "Well, that was a blunder. Let's correct it.",
+    "Looks like we have some debugging to do.",
+    "Your tests failed. Time to analyze the issue.",
+    "Oops! That didn't go as expected. Time to debug.",
+    "Well, that was a setback. Let's resolve it.",
+    "Looks like we have some fixing to do.",
+    "Your tests failed. Time to diagnose the problem.",
+    "Oops! That was a misstep. Time to debug.",
+    "Well, that was a glitch. Let's fix it.",
+    "Looks like we have some troubleshooting to do.",
+    "Your tests failed. Time to rectify the issue.",
+    "Oops! That was a hiccup. Time to debug.",
+    "Well, that was a malfunction. Let's repair it.",
+    "Looks like we have some correcting to do.",
+    "Your tests failed. Time to address the problem.",
+    "Oops! That was a slip-up. Time to debug.",
+    "Well, that was a snag. Let's fix it."
 };
 
 const char *great_news_messages[] = {
@@ -112,7 +150,27 @@ const char *great_news_messages[] = {
     "Incredible! All tests passed with no difficulties.",
     "Stellar! All tests passed with no challenges.",
     "Magnificent! All tests passed with no hurdles.",
-    "Fabulous! All tests passed with no impediments."
+    "Fabulous! All tests passed with no impediments.",
+    "Perfect! All tests passed without any issues.",
+    "Great! All tests passed with no errors.",
+    "Wonderful! All tests passed with no problems.",
+    "Amazing! All tests passed with no failures.",
+    "Fantastic! All tests passed with no bugs.",
+    "Excellent! All tests passed with no glitches.",
+    "Superb! All tests passed with no hiccups.",
+    "Outstanding! All tests passed with no snags.",
+    "Brilliant! All tests passed with no setbacks.",
+    "Impressive! All tests passed with no troubles.",
+    "Wonderful! All tests passed with no obstacles.",
+    "Terrific! All tests passed with no difficulties.",
+    "Marvelous! All tests passed with no challenges.",
+    "Spectacular! All tests passed with no hurdles.",
+    "Phenomenal! All tests passed with no impediments.",
+    "Remarkable! All tests passed with no issues.",
+    "Incredible! All tests passed with no errors.",
+    "Stellar! All tests passed with no problems.",
+    "Magnificent! All tests passed with no failures.",
+    "Fabulous! All tests passed with no bugs."
 };
 
 const char *timeout_messages[] = {
@@ -145,139 +203,27 @@ const char *timeout_messages[] = {
     "Tests are still running. Time to check for issues!",
     "Timeout detected. Some tests need optimization!",
     "Tests are taking forever. Time to investigate the cause!",
-    "Timeout alert. Some tests are not finishing in time!"
+    "Timeout alert. Some tests are not finishing in time!",
+    "Tests are taking too long. Time to find the bottleneck!",
+    "Timeout detected. Some tests need a performance review!",
+    "Tests are running indefinitely. Time to debug!",
+    "Timeout warning. Some tests are stuck!",
+    "Tests are taking too long. Time to optimize performance!",
+    "Timeout issue detected. Some tests need a closer look!",
+    "Tests are running slow. Time to investigate!",
+    "Timeout alert. Some tests are not completing!",
+    "Tests are taking too long. Time to debug!",
+    "Timeout detected. Some tests are running too long!",
+    "Tests are exceeding the time limit. Time to optimize!",
+    "Timeout issue. Some tests are not finishing!",
+    "Tests are running longer than expected. Time to debug!",
+    "Timeout warning. Some tests are taking too long!",
+    "Tests are still running. Time to check for issues!",
+    "Timeout detected. Some tests need optimization!",
+    "Tests are taking forever. Time to investigate the cause!",
+    "Timeout alert. Some tests are not finishing in time!",
+    "Tests are taking too long. Time to find the bottleneck!"
 };
-
-#else
-
-// Array of messages for each category
-const char *sarcastic_messages[] = {
-    "Wow, no tests were run! What a productive day! 😏",
-    "No tests to run, guess we're all just too good at writing code. 🧐",
-    "Congratulations, you've done absolutely nothing today. 🙃",
-    "Oh, look! No tests were executed. What an achievement! 🥳",
-    "Not a single test run, but hey, that's one way to keep things perfect! 😆",
-    "All set for a day of zero productivity? Nice! 💤",
-    "The test suite is empty, but hey, at least the code didn't break! 😜",
-    "Zero tests executed. Clearly, you've mastered the art of doing nothing. 😎",
-    "Great! We've made it through an entire test run without running a single test. 🥳",
-    "Isn't it great when there's nothing to test? 🙃",
-    "No tests today, must be a holiday! 🏖️",
-    "Looks like the tests took a day off. 🛌",
-    "No tests? Guess it's time for a coffee break. ☕",
-    "No tests executed. Time to celebrate doing nothing! 🎉",
-    "No tests? Must be a sign of perfection. 🌟",
-    "No tests today. Enjoy the free time! 🎉",
-    "No tests? Must be a coding miracle. 🤯",
-    "No tests executed. Time to relax. 😌",
-    "No tests? Must be a coding vacation. 🏝️",
-    "No tests run. Time to take it easy. 😎",
-    "No tests? Guess we're flawless. 🤷‍♂️",
-    "No tests executed. Time to unwind. 🛋️",
-    "No tests? Must be a coding break. 🤔",
-    "No tests run. Time to kick back. 🚀"
-};
-
-const char *humorous_messages[] = {
-    "Well, that was an epic failure! Better luck next time! 😂",
-    "Whoops! Someone's definitely gonna need to debug that. 🐞",
-    "Looks like someone forgot to write the test cases. 🤷‍♂️",
-    "Your tests failed, but at least you got closer to perfection... not. 🤦‍♂️",
-    "Not all heroes wear capes. Some of them fail tests. 🦸‍♂️",
-    "Don't worry, failure is just success in disguise. Or maybe not. 😅",
-    "Well, that was awkward. Let's try again, shall we? 🤔",
-    "Looks like we've encountered a bug! Hope you've got a magnifying glass. 🧐",
-    "Your tests are taking a nap, but don't worry, we'll wake them up! 😴",
-    "It's not a failure, it's just a learning experience! A very *expensive* one. 💸",
-    "Oops! That didn't go as planned. 😬",
-    "Well, that was a disaster. Time to debug! 🛠️",
-    "Looks like we hit a snag. Time to fix it! 🐛",
-    "Your tests failed spectacularly. Congrats! 🎉",
-    "Well, that was a mess. Let's clean it up. 🧹",
-    "Oops! Something went wrong. Time to investigate. 🕵️‍♂️",
-    "Well, that was a flop. Better luck next time. 🤞",
-    "Looks like we have some bugs to squash. 🐞",
-    "Your tests failed. Time to roll up your sleeves. 💪",
-    "Oops! That didn't work. Time to try again. 🔄",
-    "Well, that was a fail. Let's fix it. 🛠️",
-    "Looks like we have some issues to resolve. 🧐",
-    "Your tests failed. Time to get to work. 🛠️",
-    "Oops! That was a fail. Time to debug. 🐛",
-    "Well, that was a bust. Let's fix it. 🛠️",
-    "Looks like we have some problems to solve. 🧐",
-    "Your tests failed. Time to figure it out. 🛠️",
-    "Oops! That didn't go well. Time to debug. 🐛",
-    "Well, that was a fail. Let's try again. 🔄",
-    "Looks like we have some errors to fix. 🛠️"
-};
-
-const char *great_news_messages[] = {
-    "Great news! All tests passed. You're a testing genius! 🎉",
-    "Success! Everything works as expected. Go celebrate! 🥳",
-    "You did it! All tests passed. You're officially a rock star! 🌟",
-    "Congrats, all tests passed! You've earned a gold star! 🏅",
-    "Woohoo! All tests passed with flying colors! 🎨",
-    "No bugs found today, you're on fire! 🔥",
-    "Amazing! You've got a perfect test suite. Keep it up! 💪",
-    "Nice job! All tests passed. I think we've found the next coding superhero! 🦸‍♀️",
-    "Fantastic! No issues at all, just pure success! 😎",
-    "All tests passed, everything's awesome. 🎶",
-    "Great job! All tests passed with no issues. 👍",
-    "Congratulations! All tests passed successfully. 🎉",
-    "Well done! All tests passed with flying colors. 🌈",
-    "Awesome! All tests passed without a hitch. 👌",
-    "Fantastic! All tests passed with no problems. 🎉",
-    "Excellent! All tests passed with ease. 😎",
-    "Superb! All tests passed without any issues. 🌟",
-    "Outstanding! All tests passed with no errors. 🏆",
-    "Brilliant! All tests passed with no failures. 🌟",
-    "Impressive! All tests passed with no bugs. 🐞",
-    "Wonderful! All tests passed with no glitches. 🎉",
-    "Terrific! All tests passed with no hiccups. 👍",
-    "Marvelous! All tests passed with no snags. 🌟",
-    "Spectacular! All tests passed with no setbacks. 🎉",
-    "Phenomenal! All tests passed with no troubles. 🏆",
-    "Remarkable! All tests passed with no obstacles. 🌟",
-    "Incredible! All tests passed with no difficulties. 🎉",
-    "Stellar! All tests passed with no challenges. 🌟",
-    "Magnificent! All tests passed with no hurdles. 🏆",
-    "Fabulous! All tests passed with no impediments. 🎉"
-};
-
-const char *timeout_messages[] = {
-    "Some tests timed out. Please check the test cases. ⏰",
-    "Looks like some tests took too long to complete. Time to debug! 🐛",
-    "Uh-oh! Some tests took too long to run. Time to investigate! 🕵️‍♂️",
-    "Looks like some tests are still running. Did you forget to add a timeout? 🤔",
-    "Some tests are still in progress. Time to grab a coffee and debug! ☕",
-    "Timeout alert! Some tests didn't finish in time. ⏳",
-    "Tests are taking longer than expected. Time to check for infinite loops! 🔄",
-    "Some tests exceeded the time limit. Let's optimize! 🚀",
-    "Tests are running slow. Time to profile and improve performance! 📈",
-    "Timeout detected! Some tests need a closer look. 🔍",
-    "Tests are taking forever. Time to investigate! 🕵️‍♀️",
-    "Some tests are stuck. Time to debug! 🐞",
-    "Tests are running longer than expected. Time to check for bottlenecks! ⏱️",
-    "Timeout warning! Some tests didn't complete in time. ⏲️",
-    "Tests are still running. Time to check for performance issues! 🛠️",
-    "Some tests are taking too long. Time to optimize! ⚙️",
-    "Tests are timing out. Time to investigate the cause! 🔍",
-    "Timeout issue detected. Some tests need attention! 🚨",
-    "Tests are running slow. Time to improve efficiency! 🏃‍♂️",
-    "Timeout alert! Some tests are not finishing in time. ⏳",
-    "Tests are taking too long. Time to debug and optimize! 🛠️",
-    "Timeout detected. Some tests are running indefinitely! 🔄",
-    "Tests are exceeding the time limit. Time to investigate! 🕵️‍♂️",
-    "Timeout issue. Some tests are not completing in time! ⏲️",
-    "Tests are running longer than expected. Time to debug! 🐛",
-    "Timeout warning. Some tests are taking too long! ⏰",
-    "Tests are still running. Time to check for issues! 🛠️",
-    "Timeout detected. Some tests need optimization! 🚀",
-    "Tests are taking forever. Time to investigate the cause! 🔍",
-    "Timeout alert. Some tests are not finishing in time! ⏳"
-};
-
-#endif
 
 // Fun and sarcastic responses for dashboard categories
 
@@ -313,42 +259,27 @@ static const char* rotbrain_messages[] = {
     "This isn’t a TikTok comment section.",
     "Your slang is outdated, just like your fashion sense.",
     "I didn’t realize we were in a middle school chatroom.",
-    "Let’s keep it professional, shall we?"
-};
-
-// importent to guide the user to better behavior when writting messages
-// for a compeny product or personal projects.
-static const char* offensive_messages[] = {
-    "Wow, didn’t know we were dealing with such a bigot.",
-    "That language belongs in the past. Please don’t bring it here.",
-    "We do better than this, right? Let’s not cross the line.",
-    "Is that really how you want to speak to others?",
-    "What a lovely attitude... not.",
-    "Your words are hurtful. Do better.",
-    "Think before you speak. The internet remembers.",
-    "How about we try being respectful instead?",
-    "That was really unnecessary. Let’s move on.",
-    "You should probably rethink that comment.",
-    "I’m sure there are better ways to express yourself.",
-    "Let’s keep the conversation civil, shall we?",
-    "You can do better. Words matter.",
-    "Wow, that was borderline offensive. Let’s dial it back.",
-    "Let’s be kind to each other. No need for hate speech.",
-    "There’s a better way to get your point across.",
-    "If you can’t say something nice, don’t say anything at all.",
-    "We’re better than this. Let’s elevate the conversation.",
-    "Let’s leave the toxicity out of here.",
-    "Respect is free. Use it.",
-    "That comment was uncalled for.",
-    "We should aim to uplift, not tear down.",
-    "Your language is not acceptable here.",
-    "Let’s choose our words wisely.",
-    "That’s not the kind of language we use here.",
-    "We’re all about positivity here.",
-    "Let’s keep it positive and professional.",
-    "Your comment is not in line with our values.",
-    "We expect better from our community.",
-    "Let’s strive for a respectful dialogue."
+    "Let’s keep it professional, shall we?",
+    "Your slang is more confusing than helpful.",
+    "I think you need a break from the internet.",
+    "This message is a perfect example of why we can't have nice things.",
+    "Your slang is making my head hurt.",
+    "I’m not sure what you’re trying to say, but it’s not working.",
+    "This is a workplace, not a meme page.",
+    "Your slang is more annoying than cool.",
+    "I think you need to expand your vocabulary.",
+    "This message is a perfect example of why we need better communication.",
+    "Your slang is making me question your professionalism.",
+    "I’m not sure what you’re trying to achieve with this slang.",
+    "This is a professional setting, not a meme war.",
+    "Your slang is more distracting than helpful.",
+    "I think you need to rethink your communication style.",
+    "This message is a perfect example of why we need to be clear and concise.",
+    "Your slang is making it hard to take you seriously.",
+    "I’m not sure what you’re trying to convey with this slang.",
+    "This is a work environment, not a meme contest.",
+    "Your slang is more confusing than impressive.",
+    "I think you need to focus on clear communication."
 };
 
 // garbage words and phrases
@@ -361,40 +292,12 @@ const char *FOSSIL_TEST_ROTBRAIN[] = {
     // Support for other terms can be added via PR to this repository
 };
 
-// offensive words and phrases
-// (super hard to mainting this list as GitHub Copilot doesnt wanna help with this part of the APIs for some reason)
-static const char *FOSSIL_TEST_OFFENSIVE[] = {
-    // English offensive words and phrases
-    "2g1c", "2 girls 1 cup", "acrotomophilia", "alabama hot pocket", "alaskan pipeline", "anal", "anilingus", "anus", "apeshit", "arsehole", "ass", "asshole", "assmunch", "auto erotic", "autoerotic", "babeland",
-    "baby batter", "baby juice", "ball gag", "ball gravy", "ball kicking", "ball licking", "ball sack", "ball sucking", "bangbros", "bareback", "barely legal", "barenaked", "bastard", "bastardo", "bastinado", "bbw",
-    "bdsm", "beaner", "beaners", "beaver cleaver", "beaver lips", "bestiality", "big black", "big breasts", "big knockers", "big tits", "bimbos", "birdlock", "bitch", "bitches", "black cock", "blonde action", "blonde on blonde action",
-    "blowjob", "blow job", "blow your load", "blue waffle", "blumpkin", "bollocks", "bondage", "boner", "boob", "boobs", "booty call", "brown showers", "brunette action", "bukkake", "bulldyke", "bullet vibe", "bullshit",
-    "bung hole", "bunghole", "busty", "butt", "buttcheeks", "butthole", "camel toe", "camgirl", "camslut", "camwhore", "carpet muncher", "carpetmuncher", "chocolate rosebuds", "circlejerk", "cleveland steamer", "clit",
-    "clitoris", "clover clamps", "clusterfuck", "cock", "cocks", "coprolagnia", "coprophilia", "cornhole", "coon", "coons", "creampie", "cum", "cumming", "cunnilingus", "cunt", "darkie", "date rape", "daterape",
-    "deep throat", "deepthroat", "dendrophilia", "dick", "dildo", "dingleberry", "dingleberries", "dirty pillows", "dirty sanchez", "doggie style", "doggiestyle", "doggy style", "doggystyle", "dog style", "dolcett",
-    "domination", "dominatrix", "dommes", "donkey punch", "double dong", "double penetration", "dp action", "dry hump", "dvda", "eat my ass", "ecchi", "ejaculation", "erotic", "erotism", "escort", "eunuch", "faggot",
-    "fecal", "felch", "fellatio", "feltch", "female squirting", "femdom", "figging", "fingerbang", "fingering", "fisting", "foot fetish", "footjob", "frotting", "fuck", "fuck buttons", "fuckin", "fucking", "fucktards",
-    "fudge packer", "fudgepacker", "futanari", "gang bang", "gay sex", "genitals", "giant cock", "girl on", "girl on top", "girls gone wild", "goatcx", "goatse", "god damn", "gokkun", "golden shower", "goodpoop",
-    "goo girl", "goregasm", "grope", "group sex", "g-spot", "guro", "hand job", "handjob", "hard core", "hardcore", "hentai", "homoerotic", "honkey", "hooker", "hot carl", "hot chick", "how to kill", "how to murder",
-    "huge fat", "humping", "incest", "intercourse", "jack off", "jail bait", "jailbait", "jelly donut", "jerk off", "jigaboo", "jiggaboo", "jiggerboo", "jizz", "juggs", "kike", "kinbaku", "kinkster", "kinky", "knobbing",
-    "leather restraint", "leather straight jacket", "lemon party", "lolita", "lovemaking", "make me come", "male squirting", "masturbate", "menage a trois", "milf", "missionary position", "motherfucker", "mound of venus",
-    "mr hands", "muff diver", "muffdiving", "nambla", "nawashi", "negro", "neonazi", "nigga", "nigger", "nig nog", "nimphomania", "nipple", "nipples", "nsfw images", "nude", "nudity", "nympho", "nymphomania", "octopussy",
-    "omorashi", "one cup two girls", "one guy one jar", "orgasm", "orgy", "paedophile", "paki", "panties", "panty", "pedobear", "pedophile", "pegging", "penis", "phone sex", "piece of shit", "pissing", "piss pig", "pisspig",
-    "playboy", "pleasure chest", "pole smoker", "ponyplay", "poof", "poon", "poontang", "punany", "poop chute", "poopchute", "porn", "porno", "pornography", "prince albert piercing", "pthc", "pubes", "pussy", "queaf", "queef",
-    "quim", "raghead", "raging boner", "rape", "raping", "rapist", "rectum", "reverse cowgirl", "rimjob", "rimming", "rosy palm", "rosy palm and her 5 sisters", "rusty trombone", "sadism", "santorum", "scat", "schlong",
-    "scissoring", "semen", "sex", "sexo", "sexy", "shaved beaver", "shaved pussy", "shemale", "shibari", "shit", "shitblimp", "shitty", "shota", "shrimping", "skeet", "slanteye", "slut", "s&m", "smut", "snatch", "snowballing",
-    "sodomize", "sodomy", "spic", "splooge", "splooge moose", "spooge", "spread legs", "spunk", "strap on", "strapon", "strappado", "strip club", "style doggy", "suck", "sucks", "suicide girls", "sultry women", "swastika",
-    "swinger", "tainted love", "taste my", "tea bagging", "threesome", "throating", "tied up", "tight white", "tit", "tits", "titties", "titty", "tongue in a", "topless", "tosser", "towelhead", "tranny", "tribadism",
-    "tub girl", "tubgirl", "tushy", "twat", "twink", "twinkie", "two girls one cup", "undressing", "upskirt", "urethra play", "urophilia", "vagina", "venus mound", "vibrator", "violet wand", "vorarephilia", "voyeur", "vulva",
-    "wank", "wetback", "wet dream", "white power", "wrapping men", "wrinkled starfish", "xx", "xxx", "yaoi", "yellow showers", "yiffy", "zoophilia"
-
-    // Support for other languages can be added via PR to this repository
-};
-
 // Define custom regex patterns for offensive/meme speak detection
 const char *FOSSIL_TEST_ROTBRAIN_REGEX = "(rizz|skibidi|yeet|sus|vibe|lit|no cap|bet|fam|bruh|flex|ghost|goat|gucci|hype|janky|lowkey|mood|salty|shade|slay|snatched|stan|tea|thirsty|woke|yolo|zaddy|drip|fire)";  // Match any of the meme words
-const char *FOSSIL_TEST_OFFENSIVE_REGEX = "(badword1|badword2|offensivephrase1)";  // Match offensive words
 
+// ==============================================================================
+// CLI Options and Commands
+// ==============================================================================
 static const char *FOSSIL_TEST_OPTIONS[] = {
     "--version - Displays the current version of Fossil Test\n",
     "--help - Shows help message with usage\n",
@@ -408,15 +311,26 @@ static const char *FOSSIL_TEST_COMMANDS[] = {
     "dry-run [enable|disable] - Enables or disables dry-run mode\n"
 };
 
+// ==============================================================================
+// Other Constants
+// ==============================================================================
+
+enum {
+    _FOSSIL_TEST_RAND_MESSAGE_LEN = 50
+};
+
 static const char *FOSSIL_TEST_VERSION = "1.1.5"; // Version of Fossil Test
 static const char *FOSSIL_TEST_AUTHOR = "Michael Gene Brockus (Dreamer)"; // Author of Fossil Test
 static const char *FOSSIL_TEST_LICENSE = "Mozilla Public License 2.0"; // License of Fossil Test
 
 jmp_buf test_jump_buffer; // This will hold the jump buffer for longjmp
-static bool OFFENSIVE_WORDS_SEEN = true;
 static bool MEME_WORDS_SEEN = true;
 static int _ASSERT_COUNT = 0; // Counter for the number of assertions
 
+
+// ==============================================================================
+// Custom Functions
+// ==============================================================================
 
 // Custom implementation of strdup to avoid warnings on some platforms
 char *_custom_fossil_test_strdup(const char *str) {
@@ -449,6 +363,10 @@ bool _custom_match(const char *input, const char *pattern) {
 
     return false;
 }
+
+// ==============================================================================
+// Command-line Argument Parsing
+// ==============================================================================
 
 // Initialize the options structure
 fossil_options_t init_options(void) {
@@ -532,6 +450,10 @@ fossil_options_t fossil_options_parse(int argc, char **argv) {
     
     return options;
 }
+
+// ==============================================================================
+// Test Queue Functions
+// ==============================================================================
 
 // Function to reverse the order of test cases in the linked list
 void reverse_test_cases(test_case_t **test_cases) {
@@ -679,6 +601,10 @@ void fossil_test_remove_case(test_suite_t *suite, test_case_t *test_case) {
     }
 }
 
+// =================================================================================================
+// Fossil Test Runner
+// =================================================================================================
+
 // Setup for individual test case
 void fossil_test_case_setup(test_case_t *test_case) {
     if (test_case && test_case->setup_func) {
@@ -729,68 +655,6 @@ void fossil_test_run_suite(test_suite_t *suite, fossil_test_env_t *env) {
 
     if (env->options.show_info) {
         printf(FOSSIL_TEST_COLOR_CYAN "Total execution time for suite %s: %.3f seconds\n" FOSSIL_TEST_COLOR_RESET, suite->name, total_execution_time);
-    }
-}
-
-int fossil_test_analyze(const char *sentence) {
-    int severity_score = 0;
-
-    // Check for meme words using custom matching
-    for (size_t i = 0; i < sizeof(FOSSIL_TEST_ROTBRAIN) / sizeof(FOSSIL_TEST_ROTBRAIN[0]); ++i) {
-        if (_custom_match(sentence, FOSSIL_TEST_ROTBRAIN[i])) {
-            severity_score += 1; // Low severity for garbage words
-            printf(FOSSIL_TEST_COLOR_YELLOW "Meme word detected in sentence: %s\n" FOSSIL_TEST_COLOR_RESET, sentence);
-            MEME_WORDS_SEEN = true;
-            break;  // No need to continue if we already matched a meme word
-        }
-    }
-
-    // Check for offensive words using custom matching
-    for (size_t i = 0; i < sizeof(FOSSIL_TEST_OFFENSIVE) / sizeof(FOSSIL_TEST_OFFENSIVE[0]); ++i) {
-        if (_custom_match(sentence, FOSSIL_TEST_OFFENSIVE[i])) {
-            severity_score += 10; // High severity for offensive words
-            printf(FOSSIL_TEST_COLOR_RED "Offensive word detected in sentence: %s\n" FOSSIL_TEST_COLOR_RESET, sentence);
-            OFFENSIVE_WORDS_SEEN = true;
-            break;  // No need to continue if we already matched an offensive word
-        }
-    }
-
-    return severity_score;
-}
-
-// Internal function to handle assertions with anomaly detection
-void fossil_test_assert_internal(bool condition, const char *message, const char *file, int line, const char *func) {
-    static const char *last_message = NULL;
-    static const char *last_file = NULL;
-    static int last_line = 0;
-    static const char *last_func = NULL;
-    static int anomaly_count = 0;
-
-    _ASSERT_COUNT++;
-
-    if (!condition) {
-        int severity = fossil_test_analyze(message);
-
-        // Enhanced anomaly detection based on severity
-        if (severity > 0) {
-            if (last_message && strstr(message, last_message) != NULL &&
-                last_file && strcmp(last_file, file) == 0 &&
-                last_line == line &&
-                last_func && strcmp(last_func, func) == 0) {
-                anomaly_count++;
-                printf(FOSSIL_TEST_COLOR_YELLOW "Duplicate or similar assertion detected: %s (%s:%d in %s) [Anomaly Count: %d]\n" FOSSIL_TEST_COLOR_RESET, message, file, line, func, anomaly_count);
-            } else {
-                anomaly_count = 0;
-                printf(FOSSIL_TEST_COLOR_RED "Assertion failed: %s (%s:%d in %s)\n" FOSSIL_TEST_COLOR_RESET, message, file, line, func);
-            }
-
-            last_message = message;
-            last_file = file;
-            last_line = line;
-            last_func = func;
-        }
-
-        longjmp(test_jump_buffer, 1);
     }
 }
 
@@ -903,7 +767,6 @@ void fossil_test_init(fossil_test_env_t *env, int argc, char **argv) {
     env->total_tests = 0;
     env->timeout_count = 0;
     env->rotbrain_count = 0;
-    env->offensive_count = 0;
     env->start_execution_time = clock();
     env->end_execution_time = 0.0;
     env->unexpected_count = 0;
@@ -921,17 +784,15 @@ void fossil_test_message(fossil_test_env_t *env) {
     srand(time(NULL));
 
     if (env->pass_count == 0 && env->fail_count == 0 && env->skip_count == 0 && env->timeout_count == 0 && env->empty_count > 0) {
-        printf(FOSSIL_TEST_COLOR_YELLOW FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, sarcastic_messages[rand() % 30]);
+        printf(FOSSIL_TEST_COLOR_YELLOW FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, sarcastic_messages[rand() % _FOSSIL_TEST_RAND_MESSAGE_LEN]);
     } else if (env->rotbrain_count > 0) {
-        printf(FOSSIL_TEST_COLOR_PURPLE FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, rotbrain_messages[rand() % 30]);
-    } else if (env->offensive_count > 0) {
-        printf(FOSSIL_TEST_COLOR_RED FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, offensive_messages[rand() % 30]);
+        printf(FOSSIL_TEST_COLOR_YELLOW FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, rotbrain_messages[rand() % _FOSSIL_TEST_RAND_MESSAGE_LEN]);
     } else if (env->timeout_count > 0) {
-        printf(FOSSIL_TEST_COLOR_ORANGE FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, timeout_messages[rand() % 30]);
+        printf(FOSSIL_TEST_COLOR_ORANGE FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, timeout_messages[rand() % _FOSSIL_TEST_RAND_MESSAGE_LEN]);
     } else if (env->fail_count > 0) {
-        printf(FOSSIL_TEST_COLOR_RED FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, humorous_messages[rand() % 30]);
+        printf(FOSSIL_TEST_COLOR_RED FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, humorous_messages[rand() % _FOSSIL_TEST_RAND_MESSAGE_LEN]);
     } else if (env->pass_count > 0) {
-        printf(FOSSIL_TEST_COLOR_GREEN FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, great_news_messages[rand() % 30]);
+        printf(FOSSIL_TEST_COLOR_GREEN FOSSIL_TEST_ATTR_ITATIC "%s\n" FOSSIL_TEST_COLOR_RESET, great_news_messages[rand() % _FOSSIL_TEST_RAND_MESSAGE_LEN]);
     }
 }
 
@@ -955,9 +816,6 @@ void fossil_test_summary(fossil_test_env_t *env) {
             } else if (MEME_WORDS_SEEN) {
                 env->rotbrain_count++;
                 MEME_WORDS_SEEN = false;
-            } else if (OFFENSIVE_WORDS_SEEN) {
-                env->offensive_count++;
-                OFFENSIVE_WORDS_SEEN = false;
             } else if (test->status == TEST_STATUS_PASS) {
                 env->pass_count++;
             } else if (test->status == TEST_STATUS_FAIL) {
@@ -1000,4 +858,61 @@ void fossil_test_summary(fossil_test_env_t *env) {
     printf(FOSSIL_TEST_COLOR_BLUE FOSSIL_TEST_ATTR_BOLD "===================================================================\n" FOSSIL_TEST_COLOR_RESET);
 
     fossil_test_message(env);
+}
+
+// ========================================================================
+// Fossil Test Assertion Functions
+// ========================================================================
+
+int fossil_test_assume_analyze_message(const char *sentence) {
+    int severity_score = 0;
+
+    // Check for meme words using custom matching
+    for (size_t i = 0; i < sizeof(FOSSIL_TEST_ROTBRAIN) / sizeof(FOSSIL_TEST_ROTBRAIN[0]); ++i) {
+        if (_custom_match(sentence, FOSSIL_TEST_ROTBRAIN[i])) {
+            severity_score += 1; // Low severity for garbage words
+            printf(FOSSIL_TEST_COLOR_YELLOW "Meme word detected in sentence: %s\n" FOSSIL_TEST_COLOR_RESET, sentence);
+            MEME_WORDS_SEEN = true;
+            break;  // No need to continue if we already matched a meme word
+        }
+    }
+    return severity_score;
+}
+
+// Internal function to handle assertions with anomaly detection
+void fossil_test_assume_internal(bool condition, const char *message, const char *file, int line, const char *func) {
+    static const char *last_message = NULL;
+    static const char *last_file = NULL;
+    static int last_line = 0;
+    static const char *last_func = NULL;
+    static int anomaly_count = 0;
+    static int total_anomalies = 0;
+
+    _ASSERT_COUNT++;
+
+    if (!condition) {
+        int severity = fossil_test_assume_analyze_message(message);
+
+        // Enhanced anomaly detection based on severity
+        if (severity > 0) {
+            if (last_message && strstr(message, last_message) != NULL &&
+                last_file && strcmp(last_file, file) == 0 &&
+                last_line == line &&
+                last_func && strcmp(last_func, func) == 0) {
+                anomaly_count++;
+                total_anomalies++;
+                printf(FOSSIL_TEST_COLOR_YELLOW "Duplicate or similar assertion detected: %s (%s:%d in %s) [Anomaly Count: %d, Total Anomalies: %d]\n" FOSSIL_TEST_COLOR_RESET, message, file, line, func, anomaly_count, total_anomalies);
+            } else {
+                anomaly_count = 0;
+                printf(FOSSIL_TEST_COLOR_RED "Assertion failed: %s (%s:%d in %s)\n" FOSSIL_TEST_COLOR_RESET, message, file, line, func);
+            }
+
+            last_message = message;
+            last_file = file;
+            last_line = line;
+            last_func = func;
+        }
+
+        longjmp(test_jump_buffer, 1);
+    }
 }
