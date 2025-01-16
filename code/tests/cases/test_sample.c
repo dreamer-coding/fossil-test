@@ -110,7 +110,7 @@ FOSSIL_TEST_CASE(test_rotbrain_scan) {
     // Insert meme speak here to trigger detection
     const char *test_message = "Equality test failed: Lit input, bro!";
     
-    // Use the fossil_test_assert_internal for meme tracking
+    // Use the fossil_test_assume_internal for meme tracking
     FOSSIL_TEST_ASSUME(actual_output == data.expected_output, test_message);
 }
 
