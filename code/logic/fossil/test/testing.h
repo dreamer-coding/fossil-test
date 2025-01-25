@@ -82,6 +82,7 @@ extern "C" {
 typedef struct {
     bool show_version;
     bool show_help;
+    bool show_usage;
     bool show_info;
     bool reverse;
     bool repeat_enabled;

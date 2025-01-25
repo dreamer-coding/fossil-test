@@ -233,7 +233,8 @@ enum {
 static const char *FOSSIL_TEST_OPTIONS[] = {
     "--version - Displays the current version of Fossil Test\n",
     "--help - Shows help message with usage\n",
-    "--info - Displays detailed information about the test run\n"
+    "--info - Displays detailed information about the test run\n",
+    "--usage - Displays usage information for Fossil Test\n"
 };
 
 static const char *FOSSIL_TEST_COMMANDS[] = {
@@ -284,7 +285,6 @@ fossil_test_options_t fossil_test_init_options(void) {
 }
 
 void usage_info(void) {
-    puts(FOSSIL_TEST_COLOR_CYAN FOSSIL_TEST_ATTR_ITATIC "Usage: fossil [options] [command]"                                   FOSSIL_TEST_COLOR_RESET);
     puts(FOSSIL_TEST_COLOR_BLUE FOSSIL_TEST_ATTR_BOLD   "===================================================================" FOSSIL_TEST_COLOR_RESET);
     puts(FOSSIL_TEST_COLOR_CYAN FOSSIL_TEST_ATTR_BOLD   "\tOptions:" FOSSIL_TEST_COLOR_RESET);
     for (size_t i = 0; i < sizeof(FOSSIL_TEST_OPTIONS) / sizeof(FOSSIL_TEST_OPTIONS[0]); i++) {
@@ -305,6 +305,11 @@ void version_info(void) {
     printf(FOSSIL_TEST_COLOR_CYAN FOSSIL_TEST_ATTR_ITATIC "\tLicense: %s\n", FOSSIL_TEST_LICENSE);
 }
 
+void usage_usage(void) {
+    puts(FOSSIL_TEST_COLOR_CYAN FOSSIL_TEST_ATTR_ITATIC "Usage: fossil [options] [command]"                                   FOSSIL_TEST_COLOR_RESET);
+    puts(FOSSIL_TEST_COLOR_BLUE FOSSIL_TEST_ATTR_BOLD   "===================================================================" FOSSIL_TEST_COLOR_RESET);
+}
+
 // Parse command-line arguments
 fossil_test_options_t fossil_options_parse(int argc, char **argv) {
     fossil_test_options_t options = fossil_test_init_options();
@@ -316,6 +321,8 @@ fossil_test_options_t fossil_options_parse(int argc, char **argv) {
             options.show_help = true;
         } else if (strcmp(argv[i], "--info") == 0) {
             options.show_info = true;
+        } else if (strcmp(argv[i], "--usage") == 0) {
+            options.show_usage = true;
         } else if (strcmp(argv[i], "reverse") == 0) {
             if (i + 1 < argc && strcmp(argv[i + 1], "enable") == 0) {
                 options.reverse = true;
