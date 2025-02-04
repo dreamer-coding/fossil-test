@@ -249,6 +249,7 @@ static const char *FOSSIL_TEST_LICENSE = "Mozilla Public License 2.0"; // Licens
 
 jmp_buf test_jump_buffer; // This will hold the jump buffer for longjmp
 static int _ASSERT_COUNT = 0; // Counter for the number of assertions
+#define SNAPSHOT_FILE "test_snapshot.txt"
 
 // *****************************************************************************
 // Helper function declarations
@@ -717,7 +718,54 @@ void fossil_test_message(fossil_test_env_t *env) {
     }
 }
 
-// Summary function for test results
+void fossil_test_save_snapshot(fossil_test_env_t *env) {
+    FILE *file = fopen(SNAPSHOT_FILE, "w");
+    if (!file) {
+        fprintf(stderr, "Error: Unable to open snapshot file for writing\n");
+        return;
+    }
+    
+    fprintf(file, "Total Tests: %d\n", env->total_tests);
+    fprintf(file, "Passed: %d\n", env->pass_count);
+    fprintf(file, "Failed: %d\n", env->fail_count);
+    fprintf(file, "Skipped: %d\n", env->skip_count);
+    fprintf(file, "Empty: %d\n", env->empty_count);
+    fprintf(file, "Timeouts: %d\n", env->timeout_count);
+    
+    fclose(file);
+}
+
+bool fossil_test_compare_snapshot(fossil_test_env_t *env) {
+    FILE *file = fopen(SNAPSHOT_FILE, "r");
+    if (!file) {
+        fprintf(stderr, "Warning: No snapshot file found. Creating new snapshot.\n");
+        fossil_test_save_snapshot(env);
+        return true;
+    }
+    
+    int total_tests, pass_count, fail_count, skip_count, empty_count, timeout_count;
+    fscanf(file, "Total Tests: %d\n", &total_tests);
+    fscanf(file, "Passed: %d\n", &pass_count);
+    fscanf(file, "Failed: %d\n", &fail_count);
+    fscanf(file, "Skipped: %d\n", &skip_count);
+    fscanf(file, "Empty: %d\n", &empty_count);
+    fscanf(file, "Timeouts: %d\n", &timeout_count);
+    
+    fclose(file);
+    
+    if (total_tests == env->total_tests &&
+        pass_count == env->pass_count &&
+        fail_count == env->fail_count &&
+        skip_count == env->skip_count &&
+        empty_count == env->empty_count &&
+        timeout_count == env->timeout_count) {
+        return true;
+    }
+    
+    fprintf(stderr, "Snapshot mismatch! Test results have changed.\n");
+    return false;
+}
+
 void fossil_test_summary(fossil_test_env_t *env) {
     if (!env) {
         return;
@@ -772,6 +820,10 @@ void fossil_test_summary(fossil_test_env_t *env) {
     printf(FOSSIL_TEST_COLOR_BLUE FOSSIL_TEST_ATTR_BOLD "===================================================================\n" FOSSIL_TEST_COLOR_RESET);
     printf(FOSSIL_TEST_COLOR_CYAN FOSSIL_TEST_ATTR_ITATIC "Execution time: (%.2d) seconds, (%.2d) milliseconds, (%.3d) microseconds\n" FOSSIL_TEST_COLOR_RESET, seconds, milliseconds, microseconds);
     printf(FOSSIL_TEST_COLOR_BLUE FOSSIL_TEST_ATTR_BOLD "===================================================================\n" FOSSIL_TEST_COLOR_RESET);
+
+    if (!fossil_test_compare_snapshot(env)) {
+        fprintf(stderr, "Test results differ from the last snapshot! Consider updating the snapshot if changes are expected.\n");
+    }
 
     fossil_test_message(env);
 }
