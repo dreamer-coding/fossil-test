@@ -77,20 +77,59 @@ To get started with Fossil Test, ensure you have the following installed:
 
 The Fossil Test CLI provides an efficient way to run and manage tests directly from the terminal. Here are the available commands and options:
 
-### Commands and Options
+### 🧪 Fossil Test CLI Commands
 
-| Command                          | Description                                                                                   | Notes                                                                                         |
-|----------------------------------|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| `--version`                      | Displays the current version of Fossil Test.                                                  | Useful for verifying the version of the tool in use.                                          |
-| `--help`                         | Shows help message with usage instructions.                                                   | Provides a quick reference for all available commands.                                        |
-| `--info`                         | Displays detailed information about the test run.                                             | Includes information such as test count, duration, and configuration.                         |
-| `reverse [enable/disable]`       | Enables or disables reverse order of test execution.                                          | Useful for debugging or ensuring the tests don't depend on execution order.                   |
-| `shuffle [enable/disable]`       | Enables or disables shuffling of test execution order.                                        | Helps identify order-dependent issues in the test suite.                                      |
-| `dry-run [enable/disable]`       | Enables or disables dry run mode, showing which tests will execute without running them.      | Ideal for verifying test selection criteria before actual execution.                          |
-| `repeat <number>`                | Repeats the test suite a specified number of times.                                           | Handy for stress-testing or reproducing intermittent failures.                                |
-| `color [enable/disable]`         | Enables or disables colored output.                                                           | Enhances readability in supported terminals.                                                  |
-| `format <plain, ci, jellyfish>`  | Selects the output format for test results.                                                   | Affects how test data is displayed; useful for visual or machine-parsed output.               |
-| `summary <plain, ci, jellyfish>` | Sets the level of summary output after test execution.                                        | `ci` is minimal, `jellyfish` is smart test mode, and `plain` is default classic.              |
+| Command / Option                 | Description                                                                                   | Notes                                                                                         | Scope    |
+|----------------------------------|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|----------|
+| `--help`                         | Shows help message with usage instructions.                                                   | Provides a quick reference for all available commands.                                        | core     |
+| `--list`                         | Lists all available tests without running them.                                               | Useful for documentation or CI dry runs.                                                      | core     |
+| `--version`                      | Displays the current version.                                                                 | Useful for verifying the version of the tool in use.                                          | core     |
+
+---
+
+| Command / Option                 | Description                                                                                   | Notes                                                                                         | Scope    |
+|----------------------------------|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|----------|
+| `--info`                         | Displays detailed information about the test run.                                             | Includes information such as test count, duration, and configuration.                         | test     |
+| `--watch`                        | Watches the test directory and reruns tests on file changes.                                  | Ideal for test-driven development (TDD).                                                      | test     |
+| `--config <path>`                | Loads a specific config file for test settings.                                               | Useful for environment-specific settings.                                                     | test     |
+| `--seed <number>`                | Sets the random seed for shuffling.                                                           | Enables deterministic shuffling for debug repeatability.                                      | test     |
+| `reverse [enable/disable]`       | Enables or disables reverse order of test execution.                                          | Useful for debugging or ensuring the tests don't depend on execution order.                   | test     |
+| `shuffle [enable/disable]`       | Enables or disables shuffling of test execution order.                                        | Helps identify order-dependent issues in the test suite.                                      | test     |
+| `dry-run [enable/disable]`       | Enables dry run mode, showing which tests will execute without running them.                  | Ideal for verifying test selection criteria before actual execution.                          | test     |
+| `repeat <number>`                | Repeats the test suite a specified number of times.                                           | Handy for stress-testing or reproducing intermittent failures.                                | test     |
+| `color [enable/disable]`         | Enables or disables colored output.                                                           | Enhances readability in supported terminals.                                                  | test     |
+| `format <plain, ci, jellyfish>`  | Selects the output format for test results.                                                   | Affects how test data is displayed; useful for visual or machine-parsed output.               | test     |
+| `summary <plain, ci, jellyfish>` | Sets the level of summary output after test execution.                                        | `ci` is minimal, `jellyfish` is smart test mode, and `plain` is default classic.              | test     |
+| `fail-fast [enable/disable]`     | Stops test execution after the first failure.                                                 | Reduces noise and speeds up feedback loops.                                                   | test     |
+| `parallel <threads>`             | Runs tests in parallel using the specified number of threads.                                 | Increases speed on multicore systems.                                                         | test     |
+| `profile [enable/disable]`       | Profiles memory and CPU usage per test.                                                       | Helpful for performance tuning.                                                               | test     |
+| `shell <command>`                | Runs a shell command before or after tests.                                                   | Good for setup/teardown hooks or notifications.                                               | test     |
+| `step [enable/disable]`          | Pauses between tests and waits for confirmation to proceed.                                   | Good for live debugging or teaching.                                                          | test     |
+| `watchdog <seconds>`             | Kills any test that exceeds this global timeout.                                              | Backup to per-test `timeout`.                                                                 | test     |
+| `retry <count>`                  | Automatically retries failed tests up to `<count>` times.                                     | Can catch flaky tests for diagnostics.                                                        | test     |
+| `clean`                          | Deletes test artifacts, cache, or temporary files.                                            | Useful in combination with `--dry-run` or `--export`.                                         | test     |
+| `audit`                          | Verifies the health, performance, and structure of the test suite.                            | Could include naming, duration, and coverage checks.                                          | test     |
+
+---
+
+| Command / Option                 | Description                                                                                   | Notes                                                                                         | Scope    |
+|----------------------------------|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|----------|
+| `chaos [enable/disable]`         | Introduces controlled randomness to I/O, delays, etc.                                         | Good for stress-testing or chaos engineering.                                                 | mock     |
+| `mock-set <symbol> <value>`      | Defines a mock value or return for a specific symbol/function.                                | Used in unit tests where controlled behavior is needed.                                       | mock     |
+| `mock-restore <symbol>`          | Restores original behavior for a previously mocked symbol.                                    | Useful for cleaning up after a test.                                                          | mock     |
+| `mock-log [enable/disable]`      | Enables logging of all mock calls and arguments.                                              | Great for diagnosing what mocks were hit.                                                     | mock     |
+| `mock-trace <symbol>`            | Traces calls and arguments to a particular mock.                                              | Used for deep debugging or learning code behavior.                                            | mock     |
+
+---
+
+| Command / Option                 | Description                                                                                   | Notes                                                                                         | Scope    |
+|----------------------------------|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|----------|
+| `filter <pattern>`               | Runs only tests matching a given name or pattern.                                             | Supports regex or glob for selective testing.                                                 | mark     |
+| `scenario <name>`                | Runs a predefined test scenario or test plan.                                                 | Supports scripting and composite test plans.                                                  | mark     |
+| `groups <groupname>`            | Runs all tests in a named group.                                                              | Test grouping mechanism similar to tags, but structured.                                      | mark     |
+| `tag <name>`                     | Runs only tests marked with a given tag.                                                      | Similar to `groups`, but supports multiple tags per test.                                     | mark     |
+| `exclude <pattern>`             | Skips tests matching a given name or pattern.                                                 | Inverse of `filter`, for ignoring flaky or irrelevant tests.                                  | mark     |
+| `range <start>..<end>`           | Runs only tests in a named or numbered range.                                                 | Useful for partial test runs or test set bisection.                                           | mark     |
 
 ## Configure Build Options
 
