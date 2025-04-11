@@ -413,48 +413,48 @@ const char *timeout_suggestions[] = {
     "Investigate if your timeout limits need adjustment for specific tests."
 };
 
-enum {
-    _FOSSIL_TEST_RESPONSE_LENGTH = 50
-};
-
 static const char *FOSSIL_TEST_OPTIONS[] = {
-    "--help      - Shows help message with usage instructions\n",
-    "--list      - Lists all available tests without running them\n",
-    "--version   - Displays the current version of Fossil Test\n",
-    "--info      - Displays detailed information about the test run\n",
-    "--watch     - Watches the test directory and reruns tests on changes\n",
-    "--config    - Loads a specific config file for test settings (e.g. --config path/to/file)\n",
-    "--seed      - Sets the random seed for deterministic shuffling (e.g. --seed 42)\n",
-    "--parallel  - Runs tests in parallel using specified number of threads (e.g. --parallel 4)\n",
-    "--watchdog  - Sets global timeout per test in seconds (e.g. --watchdog 30)\n",
-    "--retry     - Retries failed tests up to N times (e.g. --retry 3)\n",
-    "--clean     - Deletes test artifacts, cache, and temporary files\n",
-    "--audit     - Verifies test suite health and performance structure\n"
+    "--help               - Shows help message with usage instructions.  Provides a quick reference for all available commands.  core\n",
+    "--list               - Lists all available tests without running them.  Useful for documentation or CI dry runs.  core\n",
+    "--version            - Displays the current version.  Useful for verifying the version of the tool in use.  core\n",
+    "--info               - Displays detailed information about the test run.  Includes information such as test count, duration, and configuration.  test\n",
+    "--watch              - Watches the test directory and reruns tests on file changes.  Ideal for test-driven development (TDD).  test\n",
+    "--config <path>      - Loads a specific config file for test settings.  Useful for environment-specific settings.  test\n",
+    "--seed <number>      - Sets the random seed for shuffling.  Enables deterministic shuffling for debug repeatability.  test\n",
+    "--parallel <threads> - Runs tests in parallel using the specified number of threads.  Increases speed on multicore systems.  test\n",
+    "--watchdog <seconds> - Kills any test that exceeds this global timeout.  Backup to per-test timeout.  test\n",
+    "--retry <count>      - Automatically retries failed tests up to <count> times.  Can catch flaky tests for diagnostics.  test\n",
+    "--clean              - Deletes test artifacts, cache, or temporary files.  Useful in combination with --dry-run or --export.  test\n"
 };
 
 static const char *FOSSIL_TEST_COMMANDS[] = {
-    "reverse     [enable|disable] - Enables or disables reverse order of test execution\n",
-    "shuffle     [enable|disable] - Enables or disables shuffling of test execution order\n",
-    "dry-run     [enable|disable] - Enables dry-run mode (no actual test execution)\n",
-    "repeat      <count>          - Repeats the test suite N times\n",
-    "color       [enable|disable] - Enables or disables colored output\n",
-    "format      <plain|ci|jellyfish> - Sets output format style\n",
-    "summary     <plain|ci|jellyfish> - Sets summary verbosity level\n",
-    "fail-fast   [enable|disable] - Stops execution after first test failure\n",
-    "profile     [enable|disable] - Enables memory and CPU profiling per test\n",
-    "shell       <command>        - Runs a shell command before or after tests\n",
-    "step        [enable|disable] - Pauses between tests for manual confirmation\n",
-    "chaos       [enable|disable] - Introduces I/O randomness and delays\n",
-    "mock-set    <symbol> <value> - Mocks a symbol or function with a value\n",
-    "mock-restore <symbol>        - Restores original behavior for a mocked symbol\n",
-    "mock-log    [enable|disable] - Logs all mock calls and arguments\n",
-    "mock-trace  <symbol>         - Traces call arguments to a specific mock symbol\n",
-    "filter      <pattern>        - Runs tests matching a name or regex pattern\n",
-    "exclude     <pattern>        - Skips tests matching a name or pattern\n",
-    "tag         <name>           - Runs only tests with a specific tag\n",
-    "groups      <groupname>      - Runs all tests in the named group\n",
-    "scenario    <name>           - Runs a predefined test scenario or plan\n",
-    "range       <start>..<end>   - Runs tests within a numeric or named range\n"
+    "reverse [enable/disable]       - Enables or disables reverse order of test execution.  Useful for debugging or ensuring the tests don't depend on execution order.  test\n",
+    "shuffle [enable/disable]       - Enables or disables shuffling of test execution order.  Helps identify order-dependent issues in the test suite.  test\n",
+    "dry-run [enable/disable]       - Enables dry run mode, showing which tests will execute without running them.  Ideal for verifying test selection criteria before actual execution.  test\n",
+    "repeat <number>                - Repeats the test suite a specified number of times.  Handy for stress-testing or reproducing intermittent failures.  test\n",
+    "color [enable/disable]         - Enables or disables colored output.  Enhances readability in supported terminals.  test\n",
+    "format <plain, ci, jellyfish>  - Selects the output format for test results.  Affects how test data is displayed; useful for visual or machine-parsed output.  test\n",
+    "summary <plain, ci, jellyfish> - Sets the level of summary output after test execution.  ci is minimal, jellyfish is smart test mode, and plain is default classic.  test\n",
+    "fail-fast [enable/disable]     - Stops test execution after the first failure.  Reduces noise and speeds up feedback loops.  test\n",
+    "parallel <threads>             - Runs tests in parallel using the specified number of threads.  Increases speed on multicore systems.  test\n",
+    "profile [enable/disable]       - Profiles memory and CPU usage per test.  Helpful for performance tuning.  test\n",
+    "shell <command>                - Runs a shell command before or after tests.  Good for setup/teardown hooks or notifications.  test\n",
+    "step [enable/disable]          - Pauses between tests and waits for confirmation to proceed.  Good for live debugging or teaching.  test\n",
+    "watchdog <seconds>             - Kills any test that exceeds this global timeout.  Backup to per-test timeout.  test\n",
+    "retry <count>                  - Automatically retries failed tests up to <count> times.  Can catch flaky tests for diagnostics.  test\n",
+    "clean                          - Deletes test artifacts, cache, or temporary files.  Useful in combination with --dry-run or --export.  test\n",
+    "audit                          - Verifies the health, performance, and structure of the test suite.  Could include naming, duration, and coverage checks.  test\n",
+    "chaos [enable/disable]         - Introduces controlled randomness to I/O, delays, etc.  Good for stress-testing or chaos engineering.  mock\n",
+    "mock-set <symbol> <value>      - Defines a mock value or return for a specific symbol/function.  Used in unit tests where controlled behavior is needed.  mock\n",
+    "mock-restore <symbol>          - Restores original behavior for a previously mocked symbol.  Useful for cleaning up after a test.  mock\n",
+    "mock-log [enable/disable]      - Enables logging of all mock calls and arguments.  Great for diagnosing what mocks were hit.  mock\n",
+    "mock-trace <symbol>            - Traces calls and arguments to a particular mock.  Used for deep debugging or learning code behavior.  mock\n",
+    "filter <pattern>               - Runs only tests matching a given name or pattern.  Supports regex or glob for selective testing.  mark\n",
+    "scenario <name>                - Runs a predefined test scenario or test plan.  Supports scripting and composite test plans.  mark\n",
+    "groups <groupname>             - Runs all tests in a named group.  Test grouping mechanism similar to tags, but structured.  mark\n",
+    "tag <name>                     - Runs only tests marked with a given tag.  Similar to groups, but supports multiple tags per test.  mark\n",
+    "exclude <pattern>              - Skips tests matching a given name or pattern.  Inverse of filter, for ignoring flaky or irrelevant tests.  mark\n",
+    "range <start>..<end>           - Runs only tests in a named or numbered range.  Useful for partial test runs or test set bisection.  mark\n"
 };
 
 static const char *FOSSIL_TEST_VERSION = "1.2.0"; // Version of Fossil Test
@@ -486,17 +486,60 @@ char *_custom_fossil_test_strdup(const char *str) {
 // Initialize the options structure
 fossil_test_options_t fossil_test_init_options(void) {
     fossil_test_options_t options;
+
+    // Core
     options.show_version = false;
     options.show_help = false;
     options.show_info = false;
+    options.show_list = false;
+
+    // Execution behavior
     options.reverse = false;
-    options.repeat_enabled = false;
-    options.repeat_count = 1;
     options.shuffle_enabled = false;
     options.dry_run = false;
-    options.summary = FOSSIL_TEST_SUMMARY_PLAIN;
+    options.fail_fast = false;
+    options.step_enabled = false;
     options.color_output = true; // default to true for better UX
-    options.format = FOSSIL_TEST_FORMAT_PLAIN; // Default format is plain
+    options.chaos_enabled = false;
+
+    // Counters & limits
+    options.repeat_enabled = false;
+    options.repeat_count = 1;
+    options.retry_count = 0;
+    options.parallel_threads = 1;
+    options.watchdog_seconds = 0;
+    options.seed = 0;
+
+    // Output config
+    options.summary = FOSSIL_TEST_SUMMARY_PLAIN;
+    options.format = FOSSIL_TEST_FORMAT_PLAIN;
+
+    // Paths & shell
+    options.config_path = NULL;
+    options.shell_command = NULL;
+
+    // Profile
+    options.profile_enabled = false;
+
+    // Cleanup / Diagnostics
+    options.clean = false;
+    options.audit = false;
+
+    // Mocking
+    options.mock_log_enabled = false;
+    options.mock_trace_symbol = NULL;
+
+    // Filtering
+    options.filter_pattern = NULL;
+    options.exclude_pattern = NULL;
+    options.scenario_name = NULL;
+    options.group_name = NULL;
+    options.tag_name = NULL;
+    options.range_spec = NULL;
+
+    // Internal
+    options.has_error = false;
+
     return options;
 }
 
@@ -541,18 +584,26 @@ fossil_test_options_t fossil_options_parse(int argc, char **argv) {
             options.show_help = true;
         } else if (strcmp(argv[i], "--info") == 0) {
             options.show_info = true;
+        } else if (strcmp(argv[i], "--list") == 0) {
+            options.show_list = true;
+        } else if (strcmp(argv[i], "--watch") == 0) {
+            options.watch_enabled = true;
+        } else if (strcmp(argv[i], "--config") == 0) {
+            if (i + 1 < argc) {
+                options.config_path = argv[i + 1];
+                i++;
+            }
+        } else if (strcmp(argv[i], "--seed") == 0) {
+            if (i + 1 < argc) {
+                options.seed = atoi(argv[i + 1]);
+                i++;
+            }
         } else if (strcmp(argv[i], "reverse") == 0) {
             if (i + 1 < argc && strcmp(argv[i + 1], "enable") == 0) {
                 options.reverse = true;
                 i++;
             } else if (i + 1 < argc && strcmp(argv[i + 1], "disable") == 0) {
                 options.reverse = false;
-                i++;
-            }
-        } else if (strcmp(argv[i], "repeat") == 0) {
-            options.repeat_enabled = true;
-            if (i + 1 < argc && argv[i + 1][0] != '-') {
-                options.repeat_count = atoi(argv[i + 1]);
                 i++;
             }
         } else if (strcmp(argv[i], "shuffle") == 0) {
@@ -571,15 +622,10 @@ fossil_test_options_t fossil_options_parse(int argc, char **argv) {
                 options.dry_run = false;
                 i++;
             }
-        } else if (strcmp(argv[i], "summary") == 0) {
-            if (i + 1 < argc) {
-                if (strcmp(argv[i + 1], "plain") == 0) {
-                    options.summary = FOSSIL_TEST_SUMMARY_PLAIN;
-                } else if (strcmp(argv[i + 1], "ci") == 0) {
-                    options.summary = FOSSIL_TEST_SUMMARY_CI;
-                } else if (strcmp(argv[i + 1], "jellyfish") == 0) {
-                    options.summary = FOSSIL_TEST_SUMMARY_JELLYFISH;
-                }
+        } else if (strcmp(argv[i], "repeat") == 0) {
+            options.repeat_enabled = true;
+            if (i + 1 < argc && argv[i + 1][0] != '-') {
+                options.repeat_count = atoi(argv[i + 1]);
                 i++;
             }
         } else if (strcmp(argv[i], "color") == 0) {
@@ -601,6 +647,100 @@ fossil_test_options_t fossil_options_parse(int argc, char **argv) {
                 } else if (strcmp(argv[i + 1], "jellyfish") == 0) {
                     options.format = FOSSIL_TEST_FORMAT_JELLYFISH;
                 }
+                i++;
+            }
+        } else if (strcmp(argv[i], "summary") == 0) {
+            if (i + 1 < argc) {
+                if (strcmp(argv[i + 1], "plain") == 0) {
+                    options.summary = FOSSIL_TEST_SUMMARY_PLAIN;
+                } else if (strcmp(argv[i + 1], "ci") == 0) {
+                    options.summary = FOSSIL_TEST_SUMMARY_CI;
+                } else if (strcmp(argv[i + 1], "jellyfish") == 0) {
+                    options.summary = FOSSIL_TEST_SUMMARY_JELLYFISH;
+                }
+                i++;
+            }
+        } else if (strcmp(argv[i], "fail-fast") == 0) {
+            options.fail_fast = true;
+        } else if (strcmp(argv[i], "parallel") == 0) {
+            if (i + 1 < argc) {
+                options.parallel_threads = atoi(argv[i + 1]);
+                i++;
+            }
+        } else if (strcmp(argv[i], "profile") == 0) {
+            options.profile_enabled = true;
+        } else if (strcmp(argv[i], "step") == 0) {
+            options.step_enabled = true;
+        } else if (strcmp(argv[i], "watchdog") == 0) {
+            if (i + 1 < argc) {
+                options.watchdog_seconds = atoi(argv[i + 1]);
+                i++;
+            }
+        } else if (strcmp(argv[i], "retry") == 0) {
+            if (i + 1 < argc) {
+                options.retry_count = atoi(argv[i + 1]);
+                i++;
+            }
+        } else if (strcmp(argv[i], "clean") == 0) {
+            options.clean = true;
+        } else if (strcmp(argv[i], "audit") == 0) {
+            options.audit = true;
+        } else if (strcmp(argv[i], "chaos") == 0) {
+            if (i + 1 < argc && strcmp(argv[i + 1], "enable") == 0) {
+                options.chaos_enabled = true;
+                i++;
+            } else if (i + 1 < argc && strcmp(argv[i + 1], "disable") == 0) {
+                options.chaos_enabled = false;
+                i++;
+            }
+        } else if (strcmp(argv[i], "mock-set") == 0) {
+            if (i + 2 < argc) {
+                // Handle mock symbol and value
+                options.mock_set_symbol = argv[i + 1];
+                options.mock_set_value = argv[i + 2];
+                i += 2;
+            }
+        } else if (strcmp(argv[i], "mock-restore") == 0) {
+            if (i + 1 < argc) {
+                // Handle mock restore
+                options.mock_restore_symbol = argv[i + 1];
+                i++;
+            }
+        } else if (strcmp(argv[i], "mock-log") == 0) {
+            options.mock_log_enabled = true;
+        } else if (strcmp(argv[i], "mock-trace") == 0) {
+            if (i + 1 < argc) {
+                options.mock_trace_symbol = argv[i + 1];
+                i++;
+            }
+        } else if (strcmp(argv[i], "filter") == 0) {
+            if (i + 1 < argc) {
+                options.filter_pattern = argv[i + 1];
+                i++;
+            }
+        } else if (strcmp(argv[i], "scenario") == 0) {
+            if (i + 1 < argc) {
+                options.scenario_name = argv[i + 1];
+                i++;
+            }
+        } else if (strcmp(argv[i], "groups") == 0) {
+            if (i + 1 < argc) {
+                options.group_name = argv[i + 1];
+                i++;
+            }
+        } else if (strcmp(argv[i], "tag") == 0) {
+            if (i + 1 < argc) {
+                options.tag_name = argv[i + 1];
+                i++;
+            }
+        } else if (strcmp(argv[i], "exclude") == 0) {
+            if (i + 1 < argc) {
+                options.exclude_pattern = argv[i + 1];
+                i++;
+            }
+        } else if (strcmp(argv[i], "range") == 0) {
+            if (i + 1 < argc) {
+                options.range_spec = argv[i + 1];
                 i++;
             }
         }
