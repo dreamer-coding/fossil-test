@@ -62,57 +62,59 @@ typedef enum {
     FOSSIL_TEST_SUMMARY_JELLYFISH
 } fossil_test_summary_t;
 
-/**
- * @struct fossil_test_options_t
- * @brief Structure to hold various options for fossil testing.
- * 
- * This structure contains various flags and parameters that control the behavior of the fossil testing framework.
- * 
- * @var fossil_test_options_t::show_version
- * Flag to indicate if the version information should be displayed.
- * 
- * @var fossil_test_options_t::show_help
- * Flag to indicate if the help information should be displayed.
- * 
- * @var fossil_test_options_t::show_info
- * Flag to indicate if additional information should be displayed.
- * 
- * @var fossil_test_options_t::reverse
- * Flag to indicate if the order of tests should be reversed.
- * 
- * @var fossil_test_options_t::repeat_enabled
- * Flag to indicate if test repetition is enabled.
- * 
- * @var fossil_test_options_t::repeat_count
- * Number of times to repeat the tests if repetition is enabled.
- * 
- * @var fossil_test_options_t::shuffle_enabled
- * Flag to indicate if the tests should be shuffled.
- * 
- * @var fossil_test_options_t::dry_run
- * Flag to indicate if the tests should be run in dry-run mode (no actual execution).
- * 
- * @var fossil_test_options_t::fail_fast
- * Flag to enable fail-fast behavior, stopping test execution after the first failure.
- * 
- * @var fossil_test_options_t::quiet
- * Flag to suppress most non-essential output for minimal console logging.
- * 
- * @var fossil_test_options_t::color_output
- * Flag to enable or disable colorized output in the console.
- */
 typedef struct {
+    // Core
     bool show_version;
     bool show_help;
     bool show_info;
+    bool show_list;
+
+    // Execution behavior
     bool reverse;
-    bool repeat_enabled;
-    int32_t repeat_count;
     bool shuffle_enabled;
     bool dry_run;
+    bool fail_fast;
+    bool step_enabled;
     bool color_output;
-    fossil_test_summary_t summary;     // Replaces 'quiet'
-    fossil_test_format_t format;       // Store the format type
+    bool chaos_enabled;
+
+    // Counters & limits
+    bool repeat_enabled;
+    int32_t repeat_count;
+    int32_t retry_count;
+    int32_t parallel_threads;
+    int32_t watchdog_seconds;
+    int32_t seed;
+
+    // Output config
+    fossil_test_summary_t summary;     // e.g., PLAIN, CI, JELLYFISH
+    fossil_test_format_t format;       // e.g., PLAIN, CI, JELLYFISH
+
+    // Paths & shell
+    const char *config_path;
+    const char *shell_command;
+
+    // Profile
+    bool profile_enabled;
+
+    // Cleanup / Diagnostics
+    bool clean;
+    bool audit;
+
+    // Mocking
+    bool mock_log_enabled;
+    const char *mock_trace_symbol; // one symbol at a time (null if unused)
+
+    // Filtering
+    const char *filter_pattern;
+    const char *exclude_pattern;
+    const char *scenario_name;
+    const char *group_name;
+    const char *tag_name;
+    const char *range_spec;
+
+    // Internal control
+    bool has_error;   // Used internally to detect option parse failures
 } fossil_test_options_t;
 
 /**
