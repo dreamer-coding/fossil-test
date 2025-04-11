@@ -513,7 +513,8 @@ fossil_test_options_t fossil_test_init_options(void) {
 
     // Output config
     options.summary = FOSSIL_TEST_SUMMARY_PLAIN;
-    options.format = FOSSIL_TEST_FORMAT_PLAIN;
+    options.format  = FOSSIL_TEST_FORMAT_PLAIN;
+    options.mode    = FOSSIL_TEST_FORMAT_PLAIN;
 
     // Paths & shell
     options.config_path = NULL;
@@ -746,7 +747,26 @@ fossil_test_options_t fossil_options_parse(int argc, char **argv) {
             }
         }
     }
-    
+
+    if (options.mode != FOSSIL_TEST_MODE_UNSPECIFIED) {
+        switch (options.mode) {
+            case FOSSIL_TEST_MODE_PLAIN:
+                options.summary = FOSSIL_TEST_SUMMARY_PLAIN;
+                options.format = FOSSIL_TEST_FORMAT_PLAIN;
+                break;
+            case FOSSIL_TEST_MODE_JELLYFISH:
+                options.summary = FOSSIL_TEST_SUMMARY_JELLYFISH;
+                options.format = FOSSIL_TEST_FORMAT_JELLYFISH;
+                break;
+            case FOSSIL_TEST_MODE_CI:
+                options.summary = FOSSIL_TEST_SUMMARY_CI;
+                options.format = FOSSIL_TEST_FORMAT_CI;
+                break;
+            default:
+                break;
+        }
+    }
+
     return options;
 }
 
