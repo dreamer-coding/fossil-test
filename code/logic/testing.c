@@ -418,19 +418,43 @@ enum {
 };
 
 static const char *FOSSIL_TEST_OPTIONS[] = {
-    "--version - Displays the current version of Fossil Test\n",
-    "--help    - Shows help message with usage\n",
-    "--info    - Displays detailed information about the test run\n"
+    "--help      - Shows help message with usage instructions\n",
+    "--list      - Lists all available tests without running them\n",
+    "--version   - Displays the current version of Fossil Test\n",
+    "--info      - Displays detailed information about the test run\n",
+    "--watch     - Watches the test directory and reruns tests on changes\n",
+    "--config    - Loads a specific config file for test settings (e.g. --config path/to/file)\n",
+    "--seed      - Sets the random seed for deterministic shuffling (e.g. --seed 42)\n",
+    "--parallel  - Runs tests in parallel using specified number of threads (e.g. --parallel 4)\n",
+    "--watchdog  - Sets global timeout per test in seconds (e.g. --watchdog 30)\n",
+    "--retry     - Retries failed tests up to N times (e.g. --retry 3)\n",
+    "--clean     - Deletes test artifacts, cache, and temporary files\n",
+    "--audit     - Verifies test suite health and performance structure\n"
 };
 
 static const char *FOSSIL_TEST_COMMANDS[] = {
-    "reverse   [enable|disable] - Enables or disables reverse order of test execution\n",
-    "repeat    [count]          - Repeats the test suite a specified number of times\n",
-    "shuffle   [enable|disable] - Enables or disables shuffling of test execution order\n",
-    "dry-run   [enable|disable] - Enables or disables dry-run mode\n",
-    "summary   [option name   ] - Sets the summary mode (plain, ci, jellyfish)\n",
-    "color     [enable|disable] - Enables or disables colored output\n",
-    "format    [option name   ] - Output format options (plain, ci, jellyfish)\n"
+    "reverse     [enable|disable] - Enables or disables reverse order of test execution\n",
+    "shuffle     [enable|disable] - Enables or disables shuffling of test execution order\n",
+    "dry-run     [enable|disable] - Enables dry-run mode (no actual test execution)\n",
+    "repeat      <count>          - Repeats the test suite N times\n",
+    "color       [enable|disable] - Enables or disables colored output\n",
+    "format      <plain|ci|jellyfish> - Sets output format style\n",
+    "summary     <plain|ci|jellyfish> - Sets summary verbosity level\n",
+    "fail-fast   [enable|disable] - Stops execution after first test failure\n",
+    "profile     [enable|disable] - Enables memory and CPU profiling per test\n",
+    "shell       <command>        - Runs a shell command before or after tests\n",
+    "step        [enable|disable] - Pauses between tests for manual confirmation\n",
+    "chaos       [enable|disable] - Introduces I/O randomness and delays\n",
+    "mock-set    <symbol> <value> - Mocks a symbol or function with a value\n",
+    "mock-restore <symbol>        - Restores original behavior for a mocked symbol\n",
+    "mock-log    [enable|disable] - Logs all mock calls and arguments\n",
+    "mock-trace  <symbol>         - Traces call arguments to a specific mock symbol\n",
+    "filter      <pattern>        - Runs tests matching a name or regex pattern\n",
+    "exclude     <pattern>        - Skips tests matching a name or pattern\n",
+    "tag         <name>           - Runs only tests with a specific tag\n",
+    "groups      <groupname>      - Runs all tests in the named group\n",
+    "scenario    <name>           - Runs a predefined test scenario or plan\n",
+    "range       <start>..<end>   - Runs tests within a numeric or named range\n"
 };
 
 static const char *FOSSIL_TEST_VERSION = "1.2.0"; // Version of Fossil Test
