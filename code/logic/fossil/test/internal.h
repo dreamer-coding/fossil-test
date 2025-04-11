@@ -104,6 +104,11 @@ typedef struct {
     // Mocking
     bool mock_log_enabled;
     const char *mock_trace_symbol; // one symbol at a time (null if unused)
+    bool watch_enabled;
+    const char *mock_set_symbol;
+    const char *mock_set_value;
+    const char *mock_restore_symbol;
+
 
     // Filtering
     const char *filter_pattern;
