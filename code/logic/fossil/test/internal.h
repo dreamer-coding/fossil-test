@@ -62,6 +62,12 @@ typedef enum {
     FOSSIL_TEST_SUMMARY_JELLYFISH
 } fossil_test_summary_t;
 
+typedef enum {
+    FOSSIL_TEST_MODE_PLAIN,
+    FOSSIL_TEST_MODE_CI,
+    FOSSIL_TEST_MODE_JELLYFISH
+} fossil_test_mode_t;
+
 typedef struct {
     // Core
     bool show_version;
@@ -89,6 +95,7 @@ typedef struct {
     // Output config
     fossil_test_summary_t summary;     // e.g., PLAIN, CI, JELLYFISH
     fossil_test_format_t format;       // e.g., PLAIN, CI, JELLYFISH
+    fossil_test_mode_t mode; // overrides both summary and format if set
 
     // Paths & shell
     const char *config_path;
@@ -108,7 +115,6 @@ typedef struct {
     const char *mock_set_symbol;
     const char *mock_set_value;
     const char *mock_restore_symbol;
-
 
     // Filtering
     const char *filter_pattern;
