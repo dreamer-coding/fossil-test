@@ -424,7 +424,8 @@ static const char *FOSSIL_TEST_OPTIONS[] = {
     "--parallel <threads> - Runs tests in parallel using the specified number of threads.  Increases speed on multicore systems.  test\n",
     "--watchdog <seconds> - Kills any test that exceeds this global timeout.  Backup to per-test timeout.  test\n",
     "--retry <count>      - Automatically retries failed tests up to <count> times.  Can catch flaky tests for diagnostics.  test\n",
-    "--clean              - Deletes test artifacts, cache, or temporary files.  Useful in combination with --dry-run or --export.  test\n"
+    "--clean              - Deletes test artifacts, cache, or temporary files.  Useful in combination with --dry-run or --export.  test\n",
+    "--audit              - Verifies the health, performance, and structure of the test suite.  Could include naming, duration, and coverage checks.  test\n"
 };
 
 static const char *FOSSIL_TEST_COMMANDS[] = {
